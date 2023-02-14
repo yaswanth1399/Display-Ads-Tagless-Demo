@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Ad Manager - Tagless Request - iFrame</title>
+</head>
+<body>
+
+    <div id="tagless-request"></div>
+
+    <script>
+        const adUnitCode = '/21665149170/zee5_staging_test_app_ios_nativeperformance_tvshow',
+              creativeSize = '320x50|728x90',
+              adHost = 'www.zee5.com';
+
+        const trEndpoint = 'https://securepubads.g.doubleclick.net/gampad/adx?',
+              cacheBust = Math.round(new Date().getTime() / 1000);
+
+        fetch(trEndpoint + 'iu=' + adUnitCode + '&sz=' + encodeURI(creativeSize) + '&url=' + adHost + '&c=' + cacheBust + '&tile=1&d_imp=1&d_imp_hdr=1')
+        .then((response) => {
+            return response.text();  
+        })
+        .then((text) => {
+            document.getElementById("tagless-request").innerHTML = text;  
+        })  
+      </script>
+
+</body>
+</html>
